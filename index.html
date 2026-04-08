@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OYT Technologies Corporation — Behavioral Intelligence for Every Human</title>
+    <meta name="description" content="OYT Technologies is building the world's first behavioral intelligence platform. Guardian uses advanced sensing and AI to perceive, understand, and support people across every life domain.">
+    <meta property="og:title" content="OYT Technologies Corporation">
+    <meta property="og:description" content="Building the behavioral intelligence platform that ensures no one navigates the complexity of their life alone.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://oytcorp.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep: #0a0f1a;
+            --surface: #111827;
+            --elevated: #1a2235;
+            --accent: #3b82f6;
+            --accent-glow: #60a5fa;
+            --warm: #f59e0b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: rgba(148, 163, 184, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Instrument Sans', sans-serif;
+            background: var(--deep);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Subtle grain texture */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo-mark {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-glow));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-text span {
+            color: var(--text-muted);
+            font-weight: 400;
+            font-size: 0.85rem;
+            margin-left: 0.5rem;
+        }
+
+        nav a.contact-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            letter-spacing: 0.3px;
+            padding: 0.5rem 1.25rem;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+        }
+
+        nav a.contact-link:hover {
+            color: var(--accent-glow);
+            border-color: var(--accent);
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 8rem 0 6rem;
+            position: relative;
+        }
+
+        /* Ambient glow behind hero */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 600px;
+            background: radial-gradient(ellipse, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            background: var(--elevated);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--warm);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            line-height: 1.15;
+            font-weight: 400;
+            max-width: 800px;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease 0.1s both;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--accent-glow);
+        }
+
+        .hero-sub {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Domains */
+        .domains {
+            padding: 4rem 0 6rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 3rem;
+        }
+
+        .domain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .domain-card {
+            background: var(--surface);
+            padding: 2rem 1.5rem;
+            transition: background 0.3s;
+        }
+
+        .domain-card:hover {
+            background: var(--elevated);
+        }
+
+        .domain-card h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .domain-card p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Mission */
+        .mission {
+            padding: 6rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .mission-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .mission h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.2rem;
+            line-height: 1.3;
+            font-weight: 400;
+        }
+
+        .mission h2 em {
+            font-style: italic;
+            color: var(--accent-glow);
+        }
+
+        .mission-text {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.9;
+        }
+
+        .mission-text p + p {
+            margin-top: 1.5rem;
+        }
+
+        /* Founder */
+        .founder {
+            padding: 6rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .founder-content {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .founder-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--elevated), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: white;
+            flex-shrink: 0;
+            border: 2px solid var(--border);
+        }
+
+        .founder-info h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .founder-title {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.3px;
+        }
+
+        .founder-bio {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.9;
+            max-width: 650px;
+        }
+
+        .founder-bio p + p {
+            margin-top: 1.25rem;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 6rem 0 4rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .contact-sub {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .contact-item label {
+            font-size: 0.7rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .contact-item a, .contact-item span {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent-glow);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-text {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .footer-legal {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Animated orbital graphic */
+        .hero-visual {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            margin: 3rem auto 5rem;
+        }
+
+        .orbit {
+            position: absolute;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .orbit-1 {
+            width: 180px;
+            height: 180px;
+            animation: spin 20s linear infinite;
+        }
+
+        .orbit-2 {
+            width: 240px;
+            height: 240px;
+            animation: spin 30s linear infinite reverse;
+        }
+
+        .orbit-3 {
+            width: 280px;
+            height: 280px;
+            border-color: rgba(59, 130, 246, 0.08);
+            animation: spin 40s linear infinite;
+        }
+
+        .orbit-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            top: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .orbit-1 .orbit-dot { background: var(--accent-glow); box-shadow: 0 0 12px var(--accent); }
+        .orbit-2 .orbit-dot { background: var(--warm); box-shadow: 0 0 12px var(--warm); }
+        .orbit-3 .orbit-dot { background: #a78bfa; box-shadow: 0 0 12px #a78bfa; }
+
+        .core-dot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 16px;
+            background: var(--accent-glow);
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(96, 165, 250, 0.4), 0 0 60px rgba(96, 165, 250, 0.15);
+            animation: corePulse 3s ease-in-out infinite;
+        }
+
+        .core-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, calc(-50% + 24px));
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .orbit-legend {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+        }
+
+        @keyframes spin {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        @keyframes corePulse {
+            0%, 100% { box-shadow: 0 0 30px rgba(96, 165, 250, 0.4), 0 0 60px rgba(96, 165, 250, 0.15); }
+            50% { box-shadow: 0 0 40px rgba(96, 165, 250, 0.6), 0 0 80px rgba(96, 165, 250, 0.25); }
+        }
+
+        /* Ambient floating orbs */
+        .ambient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .orb-1 {
+            width: 300px;
+            height: 300px;
+            background: rgba(59, 130, 246, 0.08);
+            top: 20%;
+            right: -100px;
+            animation: float 15s ease-in-out infinite;
+        }
+
+        .orb-2 {
+            width: 200px;
+            height: 200px;
+            background: rgba(167, 139, 250, 0.06);
+            bottom: 30%;
+            left: -50px;
+            animation: float 20s ease-in-out infinite reverse;
+        }
+
+        .orb-3 {
+            width: 250px;
+            height: 250px;
+            background: rgba(245, 158, 11, 0.05);
+            top: 60%;
+            right: 10%;
+            animation: float 18s ease-in-out infinite 3s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        /* Domain card icon styling */
+        .domain-icon {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: var(--elevated);
+            border: 1px solid var(--border);
+        }
+
+        .domain-card:nth-child(1) .domain-icon { color: #60a5fa; }
+        .domain-card:nth-child(2) .domain-icon { color: #34d399; }
+        .domain-card:nth-child(3) .domain-icon { color: #f472b6; }
+        .domain-card:nth-child(4) .domain-icon { color: #fbbf24; }
+        .domain-card:nth-child(5) .domain-icon { color: #a78bfa; }
+        .domain-card:nth-child(6) .domain-icon { color: #fb923c; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 5rem 0 4rem;
+            }
+
+            .mission-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .founder-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .domain-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            footer .container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .domain-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <a href="/" class="logo">
+                <div class="logo-mark">O</div>
+                <div class="logo-text">OYT Technologies <span>Corporation</span></div>
+            </a>
+            <a href="#contact" class="contact-link">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">Design &amp; Development Phase</div>
+            <h1>The behavioral intelligence platform that sees you <em>whole</em></h1>
+            <p class="hero-sub">
+                OYT Technologies is building Guardian — an advanced sensing and AI platform that perceives, understands, and supports people across health, financial, relational, and personal development domains. Because no one should navigate the complexity of their life alone.
+            </p>
+            <div class="hero-visual">
+                <div class="core-dot"></div>
+                <div class="core-label">Guardian</div>
+                <div class="orbit orbit-1">
+                    <div class="orbit-dot" style="top:-4px; left:50%; transform:translateX(-50%); background:#60a5fa; box-shadow:0 0 12px #60a5fa;"></div>
+                    <div class="orbit-dot" style="bottom:-4px; left:50%; transform:translateX(-50%); background:#34d399; box-shadow:0 0 12px #34d399;"></div>
+                </div>
+                <div class="orbit orbit-2">
+                    <div class="orbit-dot" style="top:50%; right:-4px; transform:translateY(-50%); left:auto; background:#f472b6; box-shadow:0 0 12px #f472b6;"></div>
+                    <div class="orbit-dot" style="top:50%; left:-4px; transform:translateY(-50%); background:#fbbf24; box-shadow:0 0 12px #fbbf24;"></div>
+                </div>
+                <div class="orbit orbit-3">
+                    <div class="orbit-dot" style="top:15%; right:8px; left:auto; background:#a78bfa; box-shadow:0 0 12px #a78bfa;"></div>
+                    <div class="orbit-dot" style="bottom:15%; left:8px; background:#fb923c; box-shadow:0 0 12px #fb923c;"></div>
+                </div>
+                <div class="orbit-legend">
+                    <span style="color:#60a5fa;">● Health</span>
+                    <span style="color:#34d399;">● Financial</span>
+                    <span style="color:#f472b6;">● Relational</span>
+                    <span style="color:#fbbf24;">● Growth</span>
+                    <span style="color:#a78bfa;">● Family</span>
+                    <span style="color:#fb923c;">● Full Spectrum</span>
+                </div>
+            </div>
+        </div>
+        <div class="ambient-orb orb-1"></div>
+        <div class="ambient-orb orb-2"></div>
+        <div class="ambient-orb orb-3"></div>
+    </section>
+
+    <section class="domains">
+        <div class="container">
+            <div class="section-label">Across Every Life Domain</div>
+            <div class="domain-grid">
+                <div class="domain-card">
+                    <div class="domain-icon">♡</div>
+                    <h3>Health Intelligence</h3>
+                    <p>Continuous awareness that catches patterns before they become problems.</p>
+                </div>
+                <div class="domain-card">
+                    <div class="domain-icon">◆</div>
+                    <h3>Financial Clarity</h3>
+                    <p>Behavioral insight that connects how you feel to how you spend, save, and build.</p>
+                </div>
+                <div class="domain-card">
+                    <div class="domain-icon">∞</div>
+                    <h3>Relational Depth</h3>
+                    <p>Understanding the patterns that strengthen or quietly erode your connections.</p>
+                </div>
+                <div class="domain-card">
+                    <div class="domain-icon">△</div>
+                    <h3>Personal Growth</h3>
+                    <p>Meeting you where you are and supporting where you want to go.</p>
+                </div>
+                <div class="domain-card">
+                    <div class="domain-icon">⬡</div>
+                    <h3>Family Systems</h3>
+                    <p>Shared awareness that helps families grow together, not apart.</p>
+                </div>
+                <div class="domain-card">
+                    <div class="domain-icon">◎</div>
+                    <h3>Full Spectrum</h3>
+                    <p>From elevation to optimization. Same platform, different composition based on where you start.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mission">
+        <div class="container">
+            <div class="mission-content">
+                <h2>A Human <em>Operating System</em> for the full spectrum of life</h2>
+                <div class="mission-text">
+                    <p>
+                        Every person is an unassisted project manager for the most complex system in the universe — themselves. Guardian changes that by providing continuous, context-aware intelligence that understands you across all life domains simultaneously.
+                    </p>
+                    <p>
+                        We serve the full spectrum. The person rebuilding their life from the ground up and the executive optimizing at the highest level receive the same foundational intelligence — composed differently based on where they are and where they want to go.
+                    </p>
+                    <p>
+                        Guardian protects against forces seen and unseen. It elevates without judgment. It remains present without surveillance. Privacy isn't a feature — it's the architecture.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="founder">
+        <div class="container">
+            <div class="section-label">Leadership</div>
+            <div class="founder-content">
+                <div class="founder-avatar">LB</div>
+                <div class="founder-info">
+                    <h3>Larry Bean</h3>
+                    <div class="founder-title">Founder &amp; CEO</div>
+                    <div class="founder-bio">
+                        <p>
+                            Larry Bean founded OYT Technologies on a simple conviction: the people who most need intelligent support are the people who least have access to it. As both the architect and the first test subject of Guardian's technology, Larry brings the rare perspective of building from lived experience — not theory.
+                        </p>
+                        <p>
+                            Based in McDonough, Georgia, OYT Technologies Corporation is a Delaware C-Corp developing Guardian's architecture through rigorous behavioral science research, clinical advisory partnerships, and advanced edge computing design.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div>
+                    <h2>Get in touch</h2>
+                    <p class="contact-sub">We're in active development. Reach out to learn more about Guardian and OYT Technologies.</p>
+                </div>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <label>Email</label>
+                        <a href="mailto:larry@oytcorp.com">larry@oytcorp.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <label>Headquarters</label>
+                        <span>McDonough, Georgia</span>
+                    </div>
+                    <div class="contact-item">
+                        <label>Incorporation</label>
+                        <span>Delaware C-Corporation, 2026</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <span class="footer-text">© 2026 OYT Technologies Corporation. All rights reserved.</span>
+            <span class="footer-legal">Delaware C-Corp · McDonough, GA</span>
+        </div>
+    </footer>
+
+</body>
+</html>
